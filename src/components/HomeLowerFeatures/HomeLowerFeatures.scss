@@ -1,0 +1,76 @@
+@import "../../partials/partials";
+
+
+.lower-features {
+  background-color: $color-marine-blue;
+  display: flex;
+  justify-content: center;
+  padding: 90px 0px 100px 50px;
+
+  .container {
+    width: 1600px;
+    display: flex;
+    align-items: center;
+    gap: 180px;
+
+    .item {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      &:first-child {
+        flex: 2;
+      }
+
+      &:last-child {
+        flex: 3;
+
+        .right-img {
+          width: 850px;
+          object-fit: cover;
+        }
+      }
+
+      button {
+        background-color: $color-dot-green;
+        color: $color-pure-white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer ;
+        border:none;
+        margin: 20px 0px;
+        width: max-content;
+      }
+      h1 {
+        font-weight: $font-medium;
+        color:$color-pure-white;
+        margin-bottom: 18px;
+        margin-top: 0;
+      }
+      
+      p {
+        font-size: 18px;
+        font-weight: $font-light;
+        color:$color-pure-white;
+        letter-spacing: 1px;
+        line-height: 28px;
+        margin: 4px auto 6px auto;
+      }
+      
+      .title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: $font-light;
+        font-size: 14px;
+        color:$color-pure-white;
+
+        img {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+}

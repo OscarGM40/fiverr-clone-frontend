@@ -1,0 +1,15 @@
+@import 'partials/typography';
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-family-Roboto;
+}
+
+* {
+  .link{
+    text-decoration: none;
+    color: inherit;
+  }
+}

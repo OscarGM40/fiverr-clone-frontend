@@ -1,0 +1,23 @@
+@import '../../partials/partials';
+
+.trustedBy{
+  background-color: $color-very-light-gray;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+
+  .container {
+    width: 760px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    color: $color-light-gray;
+    font-weight: $font-medium;
+
+    img{
+      height: 60px;
+      object-fit: contain;
+    }
+  }
+}

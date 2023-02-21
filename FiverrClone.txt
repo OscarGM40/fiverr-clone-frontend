@@ -1,0 +1,37 @@
+        FIVERR CLONE
+
+Front: https://www.youtube.com/watch?v=KI5CnJ9u5ok&t=112s&ab_channel=LamaDev
+
+Crear un listener sobre el scroll para cambiar el color de una navbar es tan sencillo como esto:
+
+const [isScrolled,setIsScrolled] = useState(false);
+
+const isActive = () => setIsCrolled(window.scrollY > 0);
+
+useEffect(() => {
+  window.addEventListener('scroll', isActive);
+  return () => window.removeEventListener('scroll',isActive)
+},[])
+
+De nuevo lo mejor es usar la nueva forma de rutas que están adoptando los fwks.En React es con un RouterProvider al que se le pasará en su propiedad router las rutas que cree con el método createBrowserRouter(fijate que hay varios como createMemoryRouter o createHashRouter).
+Recuerda también el uso de <Outlet ></Outlet> para incrustar las rutas
+
+Creating Image Slider min 56
+
+Fingertips:llemas de los dedos,puntas de los dedos.
+I was touching it with my fingertips
+Mirar como tipar a los children en el project e implementarlo un par de veces.
+
+Fijate como tengo una card con un borde a la que le doy height: max-content y max-height:500px.Con ello tendrá un height dinámico,máximo de 500px(esto es porque es una card con un borde).Investigar más sobre max-content
+NOTA: se puede usar en grids tmb:
+grid-template-columns: 200px 1fr max-content;
+OJO: si el doy a un texto max-content pasara de los bordes(si no le doy un max-width,por ejemplo,por eso es que suelen ir juntas)
+
+Por otra parte,min-content cogerá el ancho minimo,es muy usado con imagenes y su footer(para que la descripcion no sea más larga que la imagen).Fijate que parece ir acompañada de otra(en este caso un div con la imagen y el footer)
+
+Fit-content: dependiendo del tamaño del container,al aplicar fit-content a un elemento/caja en ese contenedor,dicho elemento usará o max-content,o min-content o el tamaño disponible como su tamaño ideal.
+En resumen esto es muy interesante,asinto:
+  height: max-content;
+  max-height: 500px;
+
+  2h 32:20 messages starting

@@ -1,0 +1,102 @@
+@import "../../partials/partials";
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $color-navbar-green;
+  color: $color-pure-white;
+  transition: all 0.5s ease;
+  position: sticky;
+  top: 0;
+  z-index:999;
+
+  &.scrolledDown {
+    color: $color-pure-black;
+    background-color: $color-pure-white;
+  }
+
+  .container {
+    width: 1400px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0px;
+
+    .logo {
+      font-size: 34px;
+      font-weight: $font-bold;
+      .text {
+        cursor: pointer;
+      }
+      .dot {
+        color: $color-dot-green;
+      }
+    }
+    .links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      font-family: $font-family-Montserrat;
+      font-weight: $font-medium;
+      cursor: pointer;
+
+      .user {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        gap: 10px;
+        position: relative;
+
+        img {
+          border-radius: 50%;
+          object-fit: cover;
+          width: 32px;
+          height: 32px;
+        }
+        .options {
+          position: absolute;
+          top: 50px;
+          right: 0;
+          padding: 20px;
+          background-color: $color-pure-white;
+          border-radius: 10px;
+          border: 1px solid $color-light-gray;
+          display: flex;
+          flex-direction: column;
+          gap:10px;
+          color: $color-gray;
+          width: 200px;
+          font-weight: $font-light;
+        }
+      }
+
+      button {
+        color: $color-pure-white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: 1px solid $color-pure-white;
+        cursor: pointer;
+        background-color: transparent;
+        
+        &:hover {
+          background-color: $color-dot-green;
+          border-color: $color-dot-green;
+        }
+      }
+    }
+  }
+  hr {
+    width: 100%;
+    height: 0px;
+    border: 0.5px solid $color-light-gray;
+  }
+  .menu {
+    width: 1400px;
+    padding: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: $font-light;
+    color: $color-gray;
+    font-family: $font-family-Montserrat;
+  }
+}

@@ -1,0 +1,102 @@
+@import "../../partials/partials";
+
+.featured {
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  background-color: $color-navbar-green;
+  color: $color-pure-white;
+
+  .container {
+    width: 1400px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .left {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    h1 {
+      font-size: 50px;
+      
+      i{
+        font-weight: $font-light;
+      }
+    }
+
+    .search {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: $color-pure-white;
+      border-radius: 5px;
+
+      .searchInput {
+        display: flex;
+        align-items: center;
+        gap:10px;
+        border-radius: 5px;
+        
+        img{
+          width: 20px;
+          height: 20px;
+          margin: 10px;  
+        }
+        input {
+          border:none;
+          outline:none;
+          font-size: 14px;
+        }
+      }
+      
+      button {
+        background-color: $color-dot-green;
+        color: $color-pure-white;
+        width: 120px;
+        height: 50px;
+        border:none;
+        cursor: pointer;
+        font-size: 14px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        
+      }
+    }
+    .popular {
+      display: flex;
+      align-items: center;
+      gap:10px;
+      
+      span {
+        color: $color-pure-white;
+        font-size: 18px;
+        font-weight: bold; 
+      }
+      button {
+        border: 1px solid $color-pure-white;
+        border-radius: 20px;
+        padding: 5px 10px;
+        color: $color-pure-white;
+        background-color: transparent;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-family: $font-family-Montserrat;
+
+        &:hover{
+          background-color: $color-pure-white;
+          color:black;
+        }
+      }
+    }
+  }
+  .right{
+    height: 100%;
+    img {
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+}

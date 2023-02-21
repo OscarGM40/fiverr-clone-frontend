@@ -1,0 +1,60 @@
+@import "../../partials/partials";
+
+.orders {
+  display: flex;
+  justify-content: center;
+
+  .container {
+    width: 1400px;
+    padding: 40px 0px;
+
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      button {
+        background-color: $color-dot-green;
+        color: $color-pure-white;
+        font-weight: $font-medium;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+      }
+    }
+
+    table {
+      width: 100%;
+      border-spacing: 0px;
+
+      tr {
+        height: 50px;
+
+        th {
+          text-align: left;
+        }
+
+        td {
+          
+          img {
+            position: relative;
+            left: 5px;
+            width: 55px;
+            height: 30px;
+            object-fit: cover;
+            border-radius: 3px;
+          }
+          
+          .message {
+            width: 20px;
+            cursor: pointer;
+          }
+        }
+
+        &:nth-child(even) {
+          background-color: $color-table-row;
+        }
+      }
+    }
+  }
+}

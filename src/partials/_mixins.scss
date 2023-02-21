@@ -1,0 +1,20 @@
+@mixin parse-stars {
+  .stars {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    img {
+      position: relative;
+      top: -1px;
+      width: 14px;
+      height: 14px;
+    }
+
+    span {
+      font-size: 14px;
+      font-weight: $font-bold;
+      color: $color-star-orange;
+    }
+  }
+}
