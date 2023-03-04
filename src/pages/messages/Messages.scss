@@ -1,0 +1,88 @@
+@import "../../partials/partials";
+
+.messages {
+  display: flex;
+  justify-content: center;
+
+  .container {
+    width: 1400px;
+    padding: 40px 0px;
+
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      button {
+        background-color: $color-dot-green;
+        color: $color-pure-white;
+        font-weight: $font-medium;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+      }
+    }
+
+    table {
+      width: 100%;
+      border-spacing: 0px;
+
+      tr:first-of-type th:first-of-type {
+        padding-left: 10px;
+      }
+
+      tr {
+        height: 70px;
+
+        &.active {
+          background-color: $color-table-row;
+        }
+
+        th {
+          text-align: left;
+        }
+
+        th:first-of-type,
+        td:first-of-type {
+          padding: 0px 15px;
+        }
+        td {
+          padding: 5px;
+
+          &:first-child {
+            font-weight: $font-medium;
+          }
+          // del segundo en adelante => td:nth-child(n+2)
+          &:nth-child(n + 2) {
+            color: $color-gray;
+          }
+
+          button {
+            background-color: $color-dot-green;
+            color: $color-pure-white;
+            font-weight: $font-medium;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+          }
+        }
+
+        td.message {
+          display: block;
+          position: relative;
+          top: 39px;
+          width: 55vw;
+          height: 100px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        &:first-of-type {
+          background-color: rgb(236, 231, 220);
+        }
+      }
+    }
+  }
+}

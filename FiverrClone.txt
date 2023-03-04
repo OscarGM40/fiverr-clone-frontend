@@ -14,7 +14,7 @@ useEffect(() => {
 },[])
 
 De nuevo lo mejor es usar la nueva forma de rutas que están adoptando los fwks.En React es con un RouterProvider al que se le pasará en su propiedad router las rutas que cree con el método createBrowserRouter(fijate que hay varios como createMemoryRouter o createHashRouter).
-Recuerda también el uso de <Outlet ></Outlet> para incrustar las rutas
+Fijate tmb en el uso de <Outlet ></Outlet> para incrustar las rutas
 
 Creating Image Slider min 56
 
@@ -34,4 +34,61 @@ En resumen esto es muy interesante,asinto:
   height: max-content;
   max-height: 500px;
 
-  2h 32:20 messages starting
+Estructura del project:
+A la altura del src tenemos los folders @types para los types del fwk.También tenemos las carpetas 'config' y 'config_paas',además de la de coverage para el testing y dist para el compilado(estas dos son ignoradas por motivos obvios).Por ultimo hay otra carpeta test con los mocks.Fijate que cada archivo de test lo tenemos al lado del componente(estilo Angular).Este approach es el mejor,ya que tengo el archivo de testing allado.
+
+Una vez entramos a src tenemos varios main subfolders.
+
+SUBFOLDER ASSETS
+1- En assets van imagenes,iconos,etc.
+
+SUBFOLDER COMMONS
+2- En commons tengo el folder componentes(seria como shared/components).También esta config(con las constantes,modelos,y routes-config) y utils con todas las abstracciones de funciones.Ojo,los modelos no se terminó de usar(estaba claro que iba mejor en otro lado,imo).Asi pues con las constantes,config de rutas y utilities podria valer
+3- despues los hooks(src/commons/hooks)
+
+SUBFOLDER CORE: este subfolder tiene a 'api',a 'epic' a 'models' a 'services' y a 'store'. En él estan todos los modelos,dtos,epicas,servicios,store slices.Fijate que los adapters van junto al modelo y los dtos junto al servicio
+
+4- SUBFOLDER LAYOUT: realmente no hay mucho,solo layouts reutilizables como page.tsx o layout.tsx
+
+5- VIEWS: todo el HTML restante
+Fijate que alguna cosilla podria moverse,como los dtos,pero esta bastante bien estructurado
+
+Para tipar unos children, primero se crea una interfaz con su tipado y despues se le pasa como argumento en una callback al tiparlos en ese componente que los use:
+
+* tipamos esos children
+interface IChildrenProps {
+  active:boolean,
+  setActive: Function,
+  data: IData
+}
+* este componente que use los children tendrá este tipado
+interface ThisComponentProps {
+ editType: "bla bla",
+ anotherProp: boolean,
+ children: (props:IChildrenProps) => JSX.Element <- linea CLAVE!!
+}
+Y al llamarlos en vez de llamar a 'children' llamo a children(arg) donde ese arg tendrá que cumplir con la interfaz(controlando asi que quiero que reciban esos children).Interesante,asinto.
+NOTA: fijate que esos argumentos tengo que tenerlos a mano en ese componente que llame a los children(tengo que pasarle el valor de esos argumentos,como si llamo a sum(2,3) tengo que tener ese 2 y ese 3)
+
+  2h 32:20 messages starting  
+
+PSEUDO-SELECTORS
+
+Nth-child(pattern) toma un único argumento que describa un patrón para buscar indices de elementos en una lista de hermanos(los indices son en base 1)
+  
+Nth-last-child(pattern) hace lo mismo pero empezando por el final
+
+:first-of-type toma el primero entre un conjunto de hermanos(no lleva args pues no los necesita).Es lo mismo que :nth-child(1)
+:last-of-type toma el último entre un conjunto de hermanos.Fijate que son como accesos rápidos a :nth-child(patter)
+
+:first-child de nuevo toma el primero entre un conjunto de siblings(y de nuevo no necesita argumentos por ello).
+:last-child hace lo mismo
+* Fijate que de nuevo :nth-child(1) y :first-child son lo mismo(y parece que :first-of-type tmb).
+
+:nth-of-type(position) busca elementos basados en el argumento entre hermanos del mismo tipo(parece que no acepta odd y even y hay que usar 2n + 1 para odd o 2n para pares).Mirar si es el que usé para el drop.¿Que diferencias hay entre éste y nth-child(pattern)?¿Porque conseguí targetear correctamente al hijo primero?
+
+NOTA: puedo targetear al primero hijo de una serie de padres con:
+table:first-of-type tr:first-of-type
+Este selector y sus derivados(xxx-of-type) parece bastante útil pues busca por tipo
+
+2h47 add Gig page

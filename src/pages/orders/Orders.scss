@@ -27,6 +27,10 @@
       width: 100%;
       border-spacing: 0px;
 
+      tr:first-of-type th:first-of-type {
+        padding-left: 10px;
+      }
+
       tr {
         height: 50px;
 
@@ -35,7 +39,6 @@
         }
 
         td {
-          
           img {
             position: relative;
             left: 5px;
@@ -44,7 +47,7 @@
             object-fit: cover;
             border-radius: 3px;
           }
-          
+
           .message {
             width: 20px;
             cursor: pointer;
@@ -53,6 +56,9 @@
 
         &:nth-child(even) {
           background-color: $color-table-row;
+        }
+        &:first-of-type {
+          background-color: rgb(236, 231, 220);
         }
       }
     }
