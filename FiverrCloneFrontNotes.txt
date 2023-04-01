@@ -91,4 +91,6 @@ NOTA: puedo targetear al primero hijo de una serie de padres con:
 table:first-of-type tr:first-of-type
 Este selector y sus derivados(xxx-of-type) parece bastante útil pues busca por tipo
 
-2h47 add Gig page
+        SECOND PART
+
+Source: https://www.youtube.com/watch?v=csUM7yfiaMw&t=233s&ab_channel=LamaDev
