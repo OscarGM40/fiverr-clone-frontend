@@ -8,48 +8,56 @@ import MyGigs from "../pages/myGigs/MyGigs";
 import Add from "../pages/add/Add";
 import Messages from "../pages/messages/Messages";
 import Message from "../pages/message/Message";
+import Login from "../pages/login/Login";
+import Register from "../pages/register/Register";
 
 export const routes = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    
-    errorElement:<h1>Page not found</h1>,
+    // TODO crear page custom para un error
+    errorElement: <h1>Page not found</h1>,
     children: [
       {
-        path: "/",
+        path: "",
         element: <Home />,
       },
       {
-        path: "/gigs",
+        path: "gigs",
         element: <Gigs />,
       },
       {
-        path: "/gig/:id",
+        path: "gig/:id",
         element: <Gig />,
       },
       {
-        path: "/orders",
+        path: "orders",
         element: <Orders />,
       },
       {
-        path: "/mygigs",
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "register",
+        element: <Register />,
+      },
+      {
+        path: "mygigs",
         element: <MyGigs />,
       },
       {
-        path: "/add",
+        path: "add",
         element: <Add />,
       },
       {
-        path: "/messages",
+        path: "messages",
         element: <Messages />,
       },
       {
-        path: "/message/:id",
+        path: "message/:id",
         element: <Message />,
       },
-  
     ],
   },
-
 ]);
