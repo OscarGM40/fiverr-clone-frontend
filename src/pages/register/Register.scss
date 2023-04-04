@@ -30,8 +30,15 @@
 
       input,
       textarea {
-        padding: 20px;
+        padding: 15px;
+        border-radius: 5px;
         border: 1px solid rgb(216, 214, 214);
+        font-size: 15px;
+
+        &::placeholder {
+          color: hsl(222, 61%, 65%);
+          font-size: 12px;
+        }
       }
 
       button {
@@ -42,6 +49,12 @@
         font-size: 18px;
         background-color: #1dbf73;
         cursor: pointer;
+        border-radius: 5px;
+        &:hover {
+          background-color: white;
+          color: #1dbf73;
+          outline: 1px solid #1dbf73;
+        }
       }
 
       .toggle {

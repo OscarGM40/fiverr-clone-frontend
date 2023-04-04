@@ -1,5 +1,8 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { IUser } from "../../interfaces/User.type";
+import { makeRequest } from "../../utils/makeRequest";
 import "./Navbar.scss";
 
 const Navbar = () => {
@@ -10,6 +13,8 @@ const Navbar = () => {
     setScrolledDown(window.scrollY > 0);
   };
 
+  const navigate = useNavigate();
+
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -18,12 +23,30 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", isscrolledDown);
   }, []);
 
-  const currentUser = {
-    id: 1,
-    username: "Anna",
-    isSeller: true,
-  };
+  let currentUser: IUser | undefined = undefined;
+  const rawUser = localStorage.getItem("currentUser");
 
+  if (rawUser) {
+    currentUser = JSON.parse(rawUser);
+  }
+
+  const handleLogout = async () => {
+    try {
+      const resp = await makeRequest.post("/auth/logout");
+      localStorage.removeItem("currentUser");
+      currentUser = undefined;
+      if (resp.data.ok) {
+        navigate("/");
+      }
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err)) {
+        if (err?.response) {
+          console.log(err.response.data.message);
+        }
+      }
+    }
+  };
+  
   return (
     <div className={scrolledDown || pathname !== "/" ? "navbar scrolledDown" : "navbar"}>
       <div className="container">
@@ -40,14 +63,18 @@ const Navbar = () => {
           <Link to="/login" className="link">
             <span>Sign in</span>
           </Link>
-          {!currentUser.isSeller && <span>Become a seller</span>}
-          {!currentUser && <button>Join</button>}
+          {/* si no es seller */}
+          {!currentUser?.isSeller && <span>Become a seller</span>}
+          {/* si no hay nadie logeado */}
+          {!currentUser && (
+            <Link to="/register" className="link">
+              <button>Join</button>
+            </Link>
+          )}
+          {/* si hay un user */}
           {currentUser && (
             <div className="user" onClick={() => setOpenOptions(!openOptions)}>
-              <img
-                src="https://cdn.pixabay.com/photo/2023/02/07/13/39/monkey-7774171_640.jpg"
-                alt=""
-              />
+              <img src={currentUser.img || "img/NoAvatar.jpg"} alt="" />
               <span>{currentUser.username}</span>
               {openOptions && (
                 <div className="options">
@@ -67,7 +94,7 @@ const Navbar = () => {
                   <Link className="link" to="/messages">
                     Messages
                   </Link>
-                  <Link className="link" to="/">
+                  <Link className="link" to="/" onClick={handleLogout}>
                     Logout
                   </Link>
                 </div>

@@ -1,29 +1,31 @@
-import axios from "axios";
 import { FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { makeRequest } from "../../utils/makeRequest";
 import "./Login.scss";
+import axios from "axios";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!username || !password) return;
     try {
-      const resp = await axios.post(
-        "http://localhost:8800/api/auth/login",
-        { username, password },
-        { withCredentials: true },
-      );
-      console.log({ resp: resp.data });
-      // navigate("/");
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (err: any) {
-      console.log(err.response.data);
-      setError(err.response.data.message);
+      const resp = await makeRequest.post("/auth/login", { username, password });
+      localStorage.setItem("currentUser", JSON.stringify(resp.data.user));
+      if (resp.data.ok) {
+        navigate("/");
+      }
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err)) {
+        if (err?.response) {
+          setError(err.response.data.message);
+        }
+      }
     }
   };
 
@@ -47,7 +49,7 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Login</button>
-        {!!error && error}
+        {!!error && <div className="error-field">{error}</div>}
       </form>
     </div>
   );

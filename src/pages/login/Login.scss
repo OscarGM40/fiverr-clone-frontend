@@ -17,13 +17,16 @@
 
     label {
       color: gray;
-      font-size: 18px;
+      font-size: 20px;
     }
 
     input,
     textarea {
       padding: 20px;
       border: 1px solid rgb(216, 214, 214);
+      font-size: 16px;
+      border-radius: 15px;
+
     }
 
     button {
@@ -34,11 +37,21 @@
       font-size: 18px;
       background-color: #1dbf73;
       cursor: pointer;
+      border-radius: 15px;
+      transition: all .2s ease-in;
+      &:hover {
+        background-color: white;
+        color: #1dbf73;
+        outline:1px solid #1dbf73;
+      }
     }
 
     span{
       color: red;
       font-size: 12px;
+    }
+    .error-field {
+      color: red;
     }
   }
 }

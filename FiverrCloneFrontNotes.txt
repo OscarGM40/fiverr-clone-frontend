@@ -94,3 +94,26 @@ Este selector y sus derivados(xxx-of-type) parece bastante útil pues busca por 
         SECOND PART
 
 Source: https://www.youtube.com/watch?v=csUM7yfiaMw&t=233s&ab_channel=LamaDev
+
+1h 10m: el estado de un checkbox(y de un radio button) viene en la propiedad event.target.checked.Como vamos a usar uno hay que crear dos funciones en el register:
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setUser((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+  };
+
+  const handleSeller = (e: ChangeEvent<HTMLInputElement>) => {
+    setUser((prev) => {
+      return { ...prev, isSeller: e.target.checked };
+    });
+  };
+
+1h28: para subir la imagen vamos a usar Cloudinary.Me logeo y creo un folder.Despues en setings ir a uploads y crear un preset.Recuerda que debe ir en unsigned
+
+NOTA: por defecto los endpoints de Cloudinary usan esta sintaxis:
+https://api.cloudinary.com/v1_1/:cloud_name/:action
+Asi pues si quiero subir una imagen a mi entorno.
+POST https://api.cloudinary.com/v1_1/oscargm40/image/upload(en este caso la action es image-upload)
+
+1h35m
